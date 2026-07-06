@@ -10,44 +10,94 @@
     <main></main>                                                                                                                                                                                             
     </body>
     <h2>produtos da kérastase</h2>
-    # ✨ Kérastase Luxury Haircare Project
+    [
+  {
+    "nome": "Kérastase Chronologiste",
+    "linha": "Chronologiste",
+    "preocupacao": "envelhecimento",
+    "tipo_cabelo": "todos",
+    "beneficio": "Revitalização profunda e brilho"
+  },
+  {
+    "nome": "Kérastase Nutritive Bain Magistral",
+    "linha": "Nutritive",
+    "preocupacao": "ressecamento",
+    "tipo_cabelo": "seco",
+    "beneficio": "Nutrição severa e maciez"
+  },
+  {
+    "nome": "Kérastase Resistance Bain Force Architecte",
+    "linha": "Resistance",
+    "preocupacao": "danificado",
+    "tipo_cabelo": "quebradiço",
+    "beneficio": "Reconstrução da fibra capilar"
+  },
+  {
+    "nome": "Kérastase Genesis Bain Hydra-Fortifiant",
+    "linha": "Genesis",
+    "preocupacao": "queda",
+    "tipo_cabelo": "fino",
+    "beneficio": "Prevenção da queda por quebra"
+  },
+  {
+    "nome": "Kérastase Discipline Bain Fluidealiste",
+    "linha": "Discipline",
+    "preocupacao": "frizz",
+    "tipo_cabelo": "rebelde",
+    "beneficio": "Controle do frizz e alinhamento"
+  }
+]
+import json
+import os
 
-Bem-vindo ao projeto de vitrine dos produtos **Kérastase**. Este repositório foi criado para categorizar e apresentar as principais linhas de tratamento capilar da marca, destacando suas funções, cores de identificação e identidades visuais.
+def carregar_produtos():
+    # Caminho dinâmico para evitar erros de diretório
+    caminho = os.path.join(os.path.dirname(__file__), '..', 'data', 'produtos.json')
+    with open(caminho, 'r', encoding='utf-8') as f:
+        return json.load(f)
 
----
+def recomendar_produto():
+    produtos = carregar_produtos()
+    
+    print("=" * 50)
+    print("   BEM-VINDO AO DIAGNÓSTICO CAPILAR KÉRASTASE   ")
+    print("=" * 50)
+    
+    print("\nQual é a principal preocupação com o seu cabelo?")
+    print("Opções: ressecamento, danificado, queda, frizz, envelhecimento")
+    preocupacao_usuario = input("Digite a preocupação: ").strip().lower()
+    
+    recomendacoes = [p for p in produtos if p['preocupacao'] == preocupacao_usuario]
+    
+    print("\n" + "-" * 50)
+    if recomendacoes:
+        print("✨ PRODUTO(S) RECOMENDADO(S) PARA VOCÊ: ✨\n")
+        for prod in recomendacoes:
+            print(f"🛍️  Linha: {prod['linha']}")
+            print(f"🔹 Produto: {prod['nome']}")
+            print(f"💡 Benefício: {prod['beneficio']}")
+            print("-" * 50)
+    else:
+        print("❌ Desculpe, não encontramos um produto específico para essa preocupação ainda.")
+        print("-" * 50)
 
-## 🎨 Paleta de Cores do Projeto (Color Codes)
+if __name__ == "__main__":
+    recomendar_produto()
+    # 💇‍♀️ Kérastase Hair Care Diagnostic Tool
 
-A Kérastase utiliza cores específicas para identificar cada uma de suas necessidades de tratamento. Abaixo estão os códigos hexadecimais principais utilizados no design deste projeto:
+Este é um projeto simples em Python que simula um sistema de diagnóstico capilar para recomendar a linha ideal de produtos da **Kérastase** com base nas necessidades do usuário (como ressecamento, queda ou danos).
 
-| Cor | Hex Code | Linha Correspondente |
-| :---: | :---: | :--- |
-| ⬛ | `#111111` | Jet Black (Premium/Geral) |
-| 🟨 | `#D4AF37` | Elixir Ultime / Chronologiste (Dourado Luxo) |
-| 🌸 | `#F3C1C6` | Chroma Absolu (Rosa Pastel / Cabelos Coloridos) |
-| 🟧 | `#E67E22` | Nutritive (Laranja / Cabelos Ressecados) |
-| 🟩 | `#2ECC71` | Résistance (Verde / Reconstrução) |
+## 🚀 Funcionalidades
+* Coleta de dados sobre a principal queixa capilar do usuário.
+* Busca automatizada em um banco de dados JSON de produtos Kérastase.
+* Recomendação personalizada exibindo a linha, o nome do produto e seus benefícios.
 
----
+## 🛠️ Tecnologias Utilizadas
+* **Python 3.x**
+* **JSON** (para armazenamento dos dados dos produtos)
 
-## 🛍️ Linhas de Produtos em Destaque
+## 📦 Como Executar o Projeto
 
-Aqui estão os principais produtos com suas respectivas imagens, descrições e indicações:
-
-### 1. Elixir Ultime (Nutrição e Brilho)
-* **Foco:** Todos os tipos de cabelo que buscam brilho radiante e proteção térmica.
-* **Cor Hex:** `#D4AF37`
-* **Imagem:**
-  ![Kérastase Elixir Ultime](https://images.unsplash.com/photo-1608248597481-496100c80836?q=80&w=400&auto=format&fit=crop) *(Imagem ilustrativa de óleo capilar luxo)*
-
-### 2. Chroma Absolu (Cuidado Pós-Coloração)
-* **Foco:** Restauração profunda e preservação da cor para cabelos coloridos ou com mechas.
-* **Cor Hex:** `#F3C1C6`
-* **Imagem:**
-  ![Kérastase Chroma Absolu](
-
-
-
-
-
-   
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/seu-usuario/kerastase-hair-care.git](https://github.com/seu-usuario/kerastase-hair-care.git)
