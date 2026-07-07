@@ -10,94 +10,80 @@
     <main></main>                                                                                                                                                                                             
     </body>
     <h2>produtos da kérastase</h2>
-    [
-  {
-    "nome": "Kérastase Chronologiste",
-    "linha": "Chronologiste",
-    "preocupacao": "envelhecimento",
-    "tipo_cabelo": "todos",
-    "beneficio": "Revitalização profunda e brilho"
-  },
-  {
-    "nome": "Kérastase Nutritive Bain Magistral",
-    "linha": "Nutritive",
-    "preocupacao": "ressecamento",
-    "tipo_cabelo": "seco",
-    "beneficio": "Nutrição severa e maciez"
-  },
-  {
-    "nome": "Kérastase Resistance Bain Force Architecte",
-    "linha": "Resistance",
-    "preocupacao": "danificado",
-    "tipo_cabelo": "quebradiço",
-    "beneficio": "Reconstrução da fibra capilar"
-  },
-  {
-    "nome": "Kérastase Genesis Bain Hydra-Fortifiant",
-    "linha": "Genesis",
-    "preocupacao": "queda",
-    "tipo_cabelo": "fino",
-    "beneficio": "Prevenção da queda por quebra"
-  },
-  {
-    "nome": "Kérastase Discipline Bain Fluidealiste",
-    "linha": "Discipline",
-    "preocupacao": "frizz",
-    "tipo_cabelo": "rebelde",
-    "beneficio": "Controle do frizz e alinhamento"
-  }
-]
-import json
-import os
+    <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fã Clube Kérastase - Cuidados Capilares</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fcf9f6;
+            color: #333;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header h1 {
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .card {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #b5835a;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
 
-def carregar_produtos():
-    # Caminho dinâmico para evitar erros de diretório
-    caminho = os.path.join(os.path.dirname(__file__), '..', 'data', 'produtos.json')
-    with open(caminho, 'r', encoding='utf-8') as f:
-        return json.load(f)
+    <header>
+        <h1>MUNDO KÉRASTASE</h1>
+        <p>O guia para o cabelo perfeito</p>
+    </header>
 
-def recomendar_produto():
-    produtos = carregar_produtos()
-    
-    print("=" * 50)
-    print("   BEM-VINDO AO DIAGNÓSTICO CAPILAR KÉRASTASE   ")
-    print("=" * 50)
-    
-    print("\nQual é a principal preocupação com o seu cabelo?")
-    print("Opções: ressecamento, danificado, queda, frizz, envelhecimento")
-    preocupacao_usuario = input("Digite a preocupação: ").strip().lower()
-    
-    recomendacoes = [p for p in produtos if p['preocupacao'] == preocupacao_usuario]
-    
-    print("\n" + "-" * 50)
-    if recomendacoes:
-        print("✨ PRODUTO(S) RECOMENDADO(S) PARA VOCÊ: ✨\n")
-        for prod in recomendacoes:
-            print(f"🛍️  Linha: {prod['linha']}")
-            print(f"🔹 Produto: {prod['nome']}")
-            print(f"💡 Benefício: {prod['beneficio']}")
-            print("-" * 50)
-    else:
-        print("❌ Desculpe, não encontramos um produto específico para essa preocupação ainda.")
-        print("-" * 50)
+    <div class="container">
+        <div class="card">
+            <h2>Sobre a Marca</h2>
+            <p>A Kérastase é uma marca de luxo francesa desenvolvida pela tecnologia avançada da L'Oréal Advanced Research. Ela é famosa mundialmente por criar tratamentos personalizados para todos os tipos de cabelo.</p>
+        </div>
 
-if __name__ == "__main__":
-    recomendar_produto()
-    # 💇‍♀️ Kérastase Hair Care Diagnostic Tool
+        <div class="card">
+            <h2>Linhas Famosas</h2>
+            <ul>
+                <li><strong>Chronologiste:</strong> Revitalização e antienvelhecimento capilar.</li>
+                <li><strong>Nutritive:</strong> Nutrição profunda para cabelos secos.</li>
+                <li><strong>Genesis:</strong> Dupla ação antiqueda e antiquebra.</li>
+                <li><strong>Blond Absolu:</strong> Cuidados e neutralização para cabelos loiros.</li>
+            </ul>
+        </div>
+    </div>
 
-Este é um projeto simples em Python que simula um sistema de diagnóstico capilar para recomendar a linha ideal de produtos da **Kérastase** com base nas necessidades do usuário (como ressecamento, queda ou danos).
+    <footer>
+        <p>Site criado como projeto de fã no GitHub Pages.</p>
+    </footer>
 
-## 🚀 Funcionalidades
-* Coleta de dados sobre a principal queixa capilar do usuário.
-* Busca automatizada em um banco de dados JSON de produtos Kérastase.
-* Recomendação personalizada exibindo a linha, o nome do produto e seus benefícios.
-
-## 🛠️ Tecnologias Utilizadas
-* **Python 3.x**
-* **JSON** (para armazenamento dos dados dos produtos)
-
-## 📦 Como Executar o Projeto
-
-1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/seu-usuario/kerastase-hair-care.git](https://github.com/seu-usuario/kerastase-hair-care.git)
+</body>
+</html>
