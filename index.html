@@ -15,75 +15,569 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fã Clube Kérastase - Cuidados Capilares</title>
+    <title>KÉRASTASE x SHEIN | Tendências em Cuidados Capilares</title>
+    <!-- FontAwesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        /* Estilos Globais inspirados na SHEIN (Limpo, moderno, foco em promoção) */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #fcf9f6;
-            color: #333;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
-        header {
+
+        body {
+            background-color: #f7f7f7;
+            color: #222;
+        }
+
+        /* Barra de Anúncio Superior */
+        .top-bar {
             background-color: #000;
             color: #fff;
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 8px 0;
+            font-size: 12px;
+            letter-spacing: 1px;
+            font-weight: bold;
         }
-        header h1 {
-            margin: 0;
+
+        /* Header / Navegação */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo h1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 700;
+            letter-spacing: 4px;
+            font-size: 28px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+            letter-spacing: 1px;
+            color: #fa6400; /* Laranja promocional SHEIN */
+            vertical-align: super;
+        }
+
+        .search-bar {
+            flex: 0 1 500px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px 40px 8px 15px;
+            border: 1px solid #222;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #222;
+            cursor: pointer;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 20px;
+        }
+
+        .nav-icons a {
+            color: #222;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #fa6400;
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 50%;
+        }
+
+        /* Banner Principal Estilo SHEIN */
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-banner h2 {
+            font-size: 42px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
             letter-spacing: 2px;
         }
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+
+        .hero-banner p {
+            font-size: 18px;
+            margin-bottom: 20px;
         }
-        .card {
-            background: white;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+
+        .btn-shop {
+            background: #fff;
+            color: #000;
+            padding: 12px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
-        h2 {
-            color: #b5835a;
+
+        .btn-shop:hover {
+            background: #000;
+            color: #fff;
         }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
+
+        /* Seção de Cupons/Flash Sale */
+        .flash-sale-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .flash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #222;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .flash-title {
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flash-title i {
+            color: #fa6400;
+        }
+
+        .countdown {
+            background: #222;
+            color: #fff;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Grid de Produtos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #eee;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #fa6400;
+            color: #fff;
+            font-size: 11px;
+            padding: 3px 6px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: #fdfdfd;
+        }
+
+        .product-info {
+            padding: 12px;
+        }
+
+        .product-brand {
+            font-size: 11px;
             color: #777;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .product-name {
+            font-size: 14px;
+            color: #222;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .product-rating {
+            color: #fdd835;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .product-rating span {
+            color: #777;
+            font-size: 11px;
+        }
+
+        .price-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .current-price {
+            color: #fa6400;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 13px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #fa6400;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 40px 20px;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #777;
+            font-size: 12px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .search-bar {
+                display: none; /* Esconde busca no mobile para simplificar */
+            }
+            .hero-banner h2 {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>MUNDO KÉRASTASE</h1>
-        <p>O guia para o cabelo perfeito</p>
-    </header>
-
-    <div class="container">
-        <div class="card">
-            <h2>Sobre a Marca</h2>
-            <p>A Kérastase é uma marca de luxo francesa desenvolvida pela tecnologia avançada da L'Oréal Advanced Research. Ela é famosa mundialmente por criar tratamentos personalizados para todos os tipos de cabelo.</p>
-        </div>
-
-        <div class="card">
-            <h2>Linhas Famosas</h2>
-            <ul>
-                <li><strong>Chronologiste:</strong> Revitalização e antienvelhecimento capilar.</li>
-                <li><strong>Nutritive:</strong> Nutrição profunda para cabelos secos.</li>
-                <li><strong>Genesis:</strong> Dupla ação antiqueda e antiquebra.</li>
-                <li><strong>Blond Absolu:</strong> Cuidados e neutralização para cabelos loiros.</li>
-            </ul>
-        </div>
+    <!-- Barra de Anúncio -->
+    <div class="top-bar">
+        FRETE GRÁTIS EM COMPRAS ACIMA DE R$199 + 15% OFF NA PRIMEIRA COMPRA! CÓDIGO: KERASHEIN
     </div>
 
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Kérastase<span>× SHEIN</span></h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar por Chronologiste, Genesis, Nutritive...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="nav-icons">
+                <a href="#"><i class="fa-regular fa-user"></i></a>
+                <a href="#"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" onclick="alert('Sacola de compras aberta!')">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cart-counter">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="hero-banner">
+        <h2>Venda Flash de Luxo</h2>
+        <p>Até 40% OFF nos queridinhos dos salões franceses</p>
+        <a href="#produtos" class="btn-shop">Comprar Agora</a>
+    </section>
+
+    <!-- Seção de Venda Flash (SHEIN Style) -->
+    <main class="flash-sale-container" id="produtos">
+        <div class="flash-header">
+            <div class="flash-title">
+                <i class="fa-solid fa-bolt"></i> VENDA FLASH KÉRASTASE
+            </div>
+            <div class="countdown" id="timer">Termina em: 02h 45m 12s</div>
+        </div>
+
+        <!-- Grid de Produtos -->
+        <div class="products-grid">
+            
+            <!-- Produto 1 -->
+            <div class="product-card">
+                <div class="product-tag">-35%</div>
+                <img src="https://images.unsplash.com/photo-1608248597481-496100c80836?auto=format&fit=crop&w=400&q=80" alt="Óleo Elixir Ultime" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">Kérastase</div>
+                    <div class="product-name">Óleo Capilar Elixir Ultime L'Original 100ml</div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(4.9k)</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="current-price">R$ 214,50</span>
+                        <span class="old-price">R$ 330,00</span>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart()">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="product-card">
+                <div class="product-tag">-20%</div>
+                <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80" alt="Shampoo Genesis" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">Kérastase</div>
+                    <div class="product-name">Shampoo Bain Hydra-Fortifiant Genesis 250ml</div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span>(2.1k)</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="current-price">R$ 159,20</span>
+                        <span class="old-price">R$ 199,00</span>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart()">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="product-card">
+                <div class="product-tag">-40%</div>
+                <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=400&q=80" alt="Máscara Chronologiste" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">Kérastase</div>
+                    <div class="product-name">Máscara de Regeneração Chronologiste 200ml</div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(5.0k)</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="current-price">R$ 288,00</span>
+                        <span class="old-price">R$ 480,00</span>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart()">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Produto 4 -->
+            <div class="product-card">
+                <div class="product-tag">-15%</div>
+                <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80" alt="Nutritive Bain Satin" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">Kérastase</div>
+                    <div class="product-name">Shampoo Nutritive Bain Satin Rico 250ml</div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <span>(984)</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="current-price">R$ 177,65</span>
+                        <span class="old-price">R$ 209,00</span>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart()">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
     <footer>
-        <p>Site criado como projeto de fã no GitHub Pages.</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Informações da Empresa</h4>
+                <ul>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Blogger de Moda Capilar</a></li>
+                    <li><a href="#">Sustentabilidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ajuda & Suporte</h4>
+                <ul>
+                    <li><a href="#">Informações de Envio</a></li>
+                    <li><a href="#">Devolução</a></li>
+                    <li><a href="#">Como Encomendar</a></li>
+                    <li><a href="#">Guia de Cuidados</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Atendimento ao Cliente</h4>
+                <ul>
+                    <li><a href="#">Contate-nos</a></li>
+                    <li><a href="#">Métodos de Pagamento</a></li>
+                    <li><a href="#">Pontos SHEIN x Kérastase</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 KÉRASTASE × SHEIN Distribuição Global. Todos os direitos reservados.
+        </div>
     </footer>
 
+    <!-- Script Simples para o funcionamento da página -->
+    <script>
+        // Contador do Carrinho
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cart-counter').innerText = cartCount;
+            alert('Produto adicionado à sua sacola SHEIN x Kérastase!');
+        }
+
+        // Timer de Contagem Regressiva Fake (Estilo SHEIN)
+        function startTimer(duration, display) {
+            let timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = "Termina em: " + hours + "h " + minutes + "m " + seconds + "s";
+
+                if (--timer < 0) {
+                    timer = duration; // reinicia o timer só para efeito estático
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            let threeHours = 60 * 60 * 3,
+                display = document.querySelector('#timer');
+            startTimer(threeHours, display);
+        };
+    </script>
 </body>
 </html>
